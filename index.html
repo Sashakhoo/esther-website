@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esther Txe | Singapore Property Advisor</title>
+<meta name="description" content="Esther Txe is a Singapore property advisor helping buyers, sellers and investors plan property decisions with clarity — investment strategy, decoupling, rental yield, mortgage affordability and more.">
+
+<meta property="og:title" content="Esther Txe | Singapore Property Advisor">
+<meta property="og:description" content="Property buying, investing and financing brought together in one clear plan — backed by the numbers.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+<style>
+  /* ========== 1. CONFIG / TOKENS ========== */
+  :root{
+    --bg:#f3f3f1;
+    --ink:#1f3a44;
+    --ink-2:#2c4a55;
+    --muted:#7a8a90;
+    --accent:#b5502f;
+    --accent-2:#d0673f;
+    --line:#dcdedd;
+    --white:#fff;
+    --r:40px;
+
+    --img-hero: url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80");
+    --img-about: url("https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=900&q=80");
+    --img-approach: url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80");
+    --img-contact: url("https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=80");
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Plus Jakarta Sans", sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  b{font-weight:600;}
+  button{font-family:inherit;border:none;cursor:pointer;background:none;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 32px;}
+  .dot{color:var(--accent);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ========== Typography helpers ========== */
+  h1,h2,h3{
+    text-transform:uppercase;
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    font-weight:300;
+  }
+  .statement{
+    font-size:clamp(2rem, 4.4vw, 3.8rem);
+    font-weight:400;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    text-transform:none;
+  }
+  .statement b{font-weight:600;}
+
+  .eyebrow{
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    display:block;
+    margin-bottom:10px;
+  }
+  .sublabel{
+    color:var(--muted);
+    font-size:.95rem;
+    font-weight:300;
+  }
+
+  /* ========== Pills / Buttons ========== */
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border-radius:40px;
+    padding:14px 28px;
+    font-size:.92rem;
+    font-weight:500;
+    white-space:nowrap;
+    transition:all .25s ease;
+  }
+  .pill-accent{background:var(--accent);color:var(--white);}
+  .pill-accent:hover{background:var(--accent-2);}
+  .pill-dark{background:rgba(31,30,28,.85);color:var(--white);}
+  .pill-dark:hover{background:rgba(31,30,28,1);}
+  .pill-line{border:1px solid rgba(255,255,255,.6);color:var(--white);}
+  .pill-line:hover{background:rgba(255,255,255,.12);}
+  .pill-line.on-light{border-color:var(--ink);color:var(--ink);}
+  .pill-line.on-light:hover{background:rgba(31,58,68,.06);}
+
+  /* ========== Section rhythm ========== */
+  section{padding:120px 0;}
+  .divider{border-top:1px solid var(--line);}
+
+  .section-head{
+    display:grid;
+    grid-template-columns:1fr 2.2fr;
+    gap:40px;
+    align-items:end;
+    margin-bottom:64px;
+  }
+  .section-head .statement{margin:0;}
+
+  /* ========== Reveal ========== */
+  .reveal{
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity .9s ease, transform .9s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ========== NAV ========== */
+  .nav-outer{
+    position:fixed;
+    top:16px;left:0;right:0;
+    z-index:1000;
+    display:flex;justify-content:center;
+    pointer-events:none;
+  }
+  nav{
+    pointer-events:auto;
+    width:min(1100px, calc(100% - 32px));
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-radius:50px;
+    padding:12px 14px 12px 28px;
+    transition:background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease;
+  }
+  nav.scrolled{
+    background:rgba(255,255,255,.82);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    box-shadow:0 10px 30px rgba(31,58,68,.1);
+  }
+  .logo{
+    font-size:1rem;
+    letter-spacing:.04em;
+    font-weight:300;
+    text-transform:uppercase;
+  }
+  .logo b{font-weight:700;}
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    font-size:.88rem;
+    font-weight:500;
+  }
+  .nav-links a:not(.pill){
+    opacity:.85;
+    position:relative;
+  }
+  .nav-links a:not(.pill):hover{opacity:1;color:var(--accent);}
+  .hamburger{
+    display:none;
+    width:40px;height:40px;
+    border-radius:50%;
+    align-items:center;justify-content:center;
+    background:rgba(31,58,68,.06);
+  }
+  .hamburger span{display:block;width:16px;height:1.5px;background:var(--ink);position:relative;}
+  .hamburger span::before,.hamburger span::after{
+    content:"";position:absolute;left:0;width:16px;height:1.5px;background:var(--ink);
+  }
+  .hamburger span::before{top:-5px;}
+  .hamburger span::after{top:5px;}
+
+  .mobile-menu{
+    position:fixed;
+    top:76px;left:16px;right:16px;
+    background:var(--white);
+    border-radius:28px;
+    box-shadow:0 20px 50px rgba(31,58,68,.18);
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    z-index:999;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-10px);
+    transition:all .25s ease;
+  }
+  .mobile-menu.open{opacity:1;visibility:visible;transform:translateY(0);}
+  .mobile-menu a{
+    padding:14px 16px;
+    border-radius:16px;
+    font-size:1rem;
+    font-weight:500;
+  }
+  .mobile-menu a:hover{background:rgba(181,80,47,.08);color:var(--accent);}
+  .mobile-menu .pill{justify-content:center;margin-top:8px;}
+
+  /* ========== HERO ========== */
+  .hero{
+    position:relative;
+    margin:16px;
+    height:calc(100vh - 16px);
+    min-height:620px;
+    border-radius:0 0 var(--r) var(--r);
+    overflow:hidden;
+    background-image:var(--img-hero);
+    background-size:cover;
+    background-position:center;
+    background-color:#c9ccc9;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    color:var(--white);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(to bottom,
+      rgba(243,243,241,.55) 0%,
+      rgba(243,243,241,.1) 28%,
+      rgba(20,30,28,0) 55%,
+      rgba(16,22,20,.55) 100%);
+    pointer-events:none;
+  }
+  .hero-top{
+    position:relative;z-index:1;
+    padding:140px 40px 0;
+  }
+  .hero-top h1{
+    color:var(--ink);
+    font-size:clamp(2.8rem, 6.4vw, 5.6rem);
+    max-width:900px;
+  }
+  .hero-top h1 .light{font-weight:300;}
+  .hero-top h1 b{font-weight:700;}
+
+  .hero-bottom{
+    position:relative;z-index:1;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    padding:0 40px 48px;
+    flex-wrap:wrap;
+  }
+  .hero-tag{font-size:.82rem;}
+  .hero-copy{
+    max-width:440px;
+    font-size:1.02rem;
+    line-height:1.5;
+  }
+  .hero-copy p{margin-bottom:22px;}
+  .hero-buttons{display:flex;gap:12px;flex-wrap:wrap;}
+
+  /* ========== ABOUT ========== */
+  #about .section-head{align-items:start;}
+  .about-left{display:flex;flex-direction:column;gap:24px;}
+  .about-photo{
+    width:100%;
+    aspect-ratio:3/4;
+    border-radius:40px 40px 40px 0;
+    background-image:var(--img-about);
+    background-size:cover;
+    background-position:center;
+    background-color:#c9ccc9;
+  }
+  .about-copy{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    font-size:1.05rem;
+    line-height:1.65;
+    margin-bottom:72px;
+  }
+  .facts-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+    padding-top:40px;
+    border-top:1px solid var(--line);
+  }
+  .fact-num{
+    font-size:clamp(2.2rem,4vw,3.2rem);
+    font-weight:300;
+    letter-spacing:-0.02em;
+  }
+  .fact-num .dot{font-weight:600;}
+  .fact-label{
+    color:var(--muted);
+    font-size:.92rem;
+    margin-top:6px;
+  }
+
+  /* ========== SERVICES ========== */
+  #services{padding:0;}
+  .services-panel{
+    background:var(--white);
+    border-radius:var(--r);
+    margin:0 16px;
+    padding:100px 64px;
+  }
+  .service-row{
+    display:grid;
+    grid-template-columns:80px 260px 1fr 40px;
+    gap:24px;
+    align-items:center;
+    padding:32px 0;
+    border-top:1px solid var(--line);
+    transition:background .2s ease;
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  .service-num{
+    font-size:1.4rem;
+    font-weight:300;
+    color:var(--muted);
+  }
+  .service-title{
+    font-size:1.3rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+    transition:transform .3s ease, color .3s ease;
+  }
+  .service-desc{
+    color:var(--ink-2);
+    font-size:.98rem;
+    line-height:1.55;
+    font-weight:300;
+  }
+  .service-arrow{
+    font-size:1.4rem;
+    color:var(--muted);
+    transition:color .3s ease, transform .3s ease;
+    text-align:right;
+  }
+  .service-row:hover .service-title{color:var(--accent);transform:translateX(8px);}
+  .service-row:hover .service-arrow{color:var(--accent);transform:translateX(4px);}
+
+  /* ========== APPROACH ========== */
+  .approach-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .approach-photo{
+    position:relative;
+    min-height:520px;
+    border-radius:var(--r);
+    background-image:var(--img-approach);
+    background-size:cover;
+    background-position:center;
+    background-color:#c9ccc9;
+    display:flex;
+    align-items:flex-end;
+    padding:28px;
+  }
+  .approach-steps{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .step-card{
+    border-radius:28px;
+    padding:36px 28px;
+    background:var(--white);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    min-height:230px;
+  }
+  .step-card.dark{
+    background:var(--ink-2);
+    color:var(--white);
+  }
+  .step-card.dark .step-title{color:var(--white);}
+  .step-card.dark .step-desc{color:rgba(255,255,255,.75);}
+  .step-num{
+    font-size:2.6rem;
+    font-weight:200;
+    color:var(--accent);
+  }
+  .step-card.dark .step-num{color:var(--accent-2);}
+  .step-title{
+    font-size:1.1rem;
+    text-transform:uppercase;
+    font-weight:600;
+    margin:18px 0 8px;
+  }
+  .step-desc{
+    font-size:.92rem;
+    line-height:1.5;
+    color:var(--ink-2);
+    font-weight:300;
+  }
+
+  /* ========== CALCULATOR ========== */
+  .calc-card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border-radius:var(--r);
+    overflow:hidden;
+  }
+  .calc-inputs{
+    background:var(--white);
+    padding:64px;
+  }
+  .field{margin-bottom:36px;}
+  .field label{
+    display:block;
+    font-size:.82rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:10px;
+    font-weight:500;
+  }
+  .field input{
+    width:100%;
+    border:none;
+    border-bottom:1.5px solid var(--line);
+    background:transparent;
+    font-family:inherit;
+    font-size:1.6rem;
+    font-weight:300;
+    color:var(--ink);
+    padding:6px 2px 12px;
+    transition:border-color .2s ease;
+  }
+  .field input:focus{
+    outline:none;
+    border-color:var(--accent);
+  }
+  .calc-results{
+    background:var(--accent);
+    color:var(--white);
+    padding:64px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .yield-label{
+    font-size:.85rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    opacity:.85;
+    margin-bottom:6px;
+  }
+  .yield-big{
+    font-size:clamp(4rem,8vw,6.5rem);
+    font-weight:300;
+    letter-spacing:-0.03em;
+    line-height:1;
+    margin-bottom:32px;
+  }
+  .yield-rows{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    border-top:1px solid rgba(255,255,255,.3);
+    padding-top:24px;
+  }
+  .yield-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:.98rem;
+  }
+  .yield-row span:first-child{opacity:.8;}
+  .yield-row span:last-child{font-weight:500;}
+  .calc-disclaimer{
+    margin-top:24px;
+    font-size:.82rem;
+    color:var(--muted);
+    max-width:720px;
+    line-height:1.5;
+  }
+
+  /* ========== CONTACT ========== */
+  .contact-card{
+    position:relative;
+    min-height:560px;
+    margin:0 16px;
+    border-radius:var(--r);
+    overflow:hidden;
+    background-image:var(--img-contact);
+    background-size:cover;
+    background-position:center;
+    background-color:#c9ccc9;
+    display:flex;
+    align-items:center;
+  }
+  .contact-card::before{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(to right, rgba(20,30,34,.88) 0%, rgba(20,30,34,.55) 45%, rgba(20,30,34,.05) 85%);
+  }
+  .contact-inner{
+    position:relative;z-index:1;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    padding:0 56px;
+    flex-wrap:wrap;
+  }
+  .contact-left{
+    color:var(--white);
+    max-width:520px;
+  }
+  .contact-left h2{
+    font-size:clamp(2.2rem,4.8vw,3.6rem);
+    margin-bottom:24px;
+  }
+  .contact-left h2 b{font-weight:700;}
+  .contact-phone{
+    display:inline-block;
+    font-size:1.3rem;
+    font-weight:500;
+    margin-bottom:28px;
+    border-bottom:1px solid rgba(255,255,255,.4);
+    padding-bottom:4px;
+  }
+  .contact-phone:hover{color:var(--accent-2);border-color:var(--accent-2);}
+  .contact-buttons{display:flex;gap:14px;flex-wrap:wrap;}
+  .contact-right{
+    color:var(--white);
+    text-align:right;
+    font-size:.86rem;
+    line-height:1.7;
+    opacity:.85;
+    max-width:260px;
+  }
+
+  /* ========== FOOTER ========== */
+  footer{
+    padding:40px 0;
+    text-align:center;
+    color:var(--muted);
+    font-size:.82rem;
+    line-height:1.7;
+  }
+
+  /* ========== WHATSAPP WIDGET ========== */
+  .wa-fab-wrap{
+    position:fixed;
+    bottom:28px;right:28px;
+    z-index:1100;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .wa-tooltip{
+    background:var(--white);
+    color:var(--ink);
+    padding:12px 18px;
+    border-radius:16px;
+    font-size:.88rem;
+    font-weight:500;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    white-space:nowrap;
+    opacity:0;
+    transform:translateX(10px);
+    transition:opacity .3s ease, transform .3s ease;
+    pointer-events:none;
+  }
+  .wa-tooltip.show{opacity:1;transform:translateX(0);}
+  .wa-tooltip::after{
+    content:"";
+    position:absolute;
+    right:-6px;top:50%;
+    transform:translateY(-50%);
+    width:12px;height:12px;
+    background:var(--white);
+    border-radius:2px;
+    rotate:45deg;
+  }
+  .wa-btn{
+    position:relative;
+    width:60px;height:60px;
+    border-radius:50%;
+    background:#25d366;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 24px rgba(37,211,102,.4);
+  }
+  .wa-btn svg{width:30px;height:30px;fill:#fff;}
+  .wa-ring{
+    position:absolute;inset:0;
+    border-radius:50%;
+    border:2px solid #25d366;
+    animation:wa-pulse 2.2s ease-out infinite;
+  }
+  @keyframes wa-pulse{
+    0%{transform:scale(1);opacity:.7;}
+    100%{transform:scale(1.7);opacity:0;}
+  }
+  .wa-badge{
+    position:absolute;
+    top:-4px;right:-4px;
+    width:22px;height:22px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    font-size:.72rem;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid var(--bg);
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .wa-badge.hide{opacity:0;transform:scale(.5);pointer-events:none;}
+
+  .wa-popup{
+    position:fixed;
+    bottom:100px;right:28px;
+    width:320px;
+    max-width:calc(100vw - 32px);
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.25);
+    z-index:1100;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(16px) scale(.98);
+    transition:all .25s ease;
+  }
+  .wa-popup.open{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
+  .wa-popup-header{
+    background:var(--ink-2);
+    color:#fff;
+    padding:18px 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .wa-avatar{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:.9rem;
+    position:relative;
+  }
+  .wa-online{
+    position:absolute;
+    bottom:-2px;right:-2px;
+    width:11px;height:11px;
+    border-radius:50%;
+    background:#25d366;
+    border:2px solid var(--ink-2);
+  }
+  .wa-popup-header .who{flex:1;}
+  .wa-popup-header .name{font-size:.95rem;font-weight:600;}
+  .wa-popup-header .status{font-size:.76rem;opacity:.75;}
+  .wa-close{
+    width:28px;height:28px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.1rem;
+    color:#fff;
+    opacity:.8;
+    border-radius:50%;
+  }
+  .wa-close:hover{opacity:1;background:rgba(255,255,255,.12);}
+  .wa-body{
+    background:#ece5dd;
+    padding:20px;
+    min-height:140px;
+  }
+  .wa-bubble{
+    background:#fff;
+    border-radius:12px;
+    padding:14px 16px;
+    font-size:.9rem;
+    line-height:1.5;
+    color:#222;
+    box-shadow:0 1px 2px rgba(0,0,0,.08);
+    max-width:88%;
+  }
+  .wa-time{
+    font-size:.72rem;
+    color:#8a8a8a;
+    margin-top:6px;
+    text-align:right;
+  }
+  .wa-start{
+    display:block;
+    width:100%;
+    text-align:center;
+    padding:14px;
+    background:#25d366;
+    color:#fff;
+    font-weight:600;
+    font-size:.92rem;
+  }
+  .wa-start:hover{background:#1ebe59;}
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width:960px){
+    section{padding:80px 0;}
+    .wrap{padding:0 24px;}
+    .section-head{grid-template-columns:1fr;gap:16px;}
+    .about-copy{grid-template-columns:1fr;gap:28px;margin-bottom:48px;}
+    .facts-row{grid-template-columns:1fr;gap:28px;}
+    .services-panel{padding:60px 32px;margin:0 16px;}
+    .service-row{grid-template-columns:50px 1fr;grid-template-areas:"num title" "num desc";}
+    .service-num{grid-area:num;}
+    .service-title{grid-area:title;}
+    .service-desc{grid-area:desc;}
+    .service-arrow{display:none;}
+    .approach-grid{grid-template-columns:1fr;}
+    .approach-photo{min-height:360px;}
+    .calc-card{grid-template-columns:1fr;}
+    .calc-inputs,.calc-results{padding:48px 36px;}
+    .contact-inner{flex-direction:column;align-items:flex-start;padding:56px 36px;}
+    .contact-right{text-align:left;}
+    nav{background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .hero-top{padding:120px 24px 0;}
+    .hero-bottom{padding:0 24px 40px;}
+    .hero-tag{display:none;}
+  }
+
+  @media (max-width:560px){
+    .wrap{padding:0 20px;}
+    .services-panel{padding:48px 20px;}
+    .approach-steps{grid-template-columns:1fr;}
+    .calc-inputs,.calc-results{padding:34px 24px;}
+    .hero-copy{max-width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<div class="nav-outer">
+  <nav id="siteNav" aria-label="Main navigation">
+    <a href="#top" class="logo"><span class="light">ESTHER</span> <b>TXE</b></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#contact" class="pill pill-accent">Book a Consultation</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+    </button>
+  </nav>
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#approach">Approach</a>
+  <a href="#calculator">Calculator</a>
+  <a href="#contact" class="pill pill-accent">Book a Consultation</a>
+</div>
+
+<div id="top"></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-top">
+    <h1>
+      <span class="light">YOUR HOME.</span><br>
+      <b>YOUR STRATEGY.</b><br>
+      <span class="light">YOUR</span> <b>FUTURE</b><span class="light">.</span>
+    </h1>
+  </div>
+  <div class="hero-bottom">
+    <span class="hero-tag pill pill-dark">Esther Txe · Property Advisor</span>
+    <div class="hero-copy">
+      <p>Brings property <b>buying</b>, <b>investing</b> and <b>financing</b> together in <b>one clear plan</b> — so every decision is backed by the numbers.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="pill pill-accent">Book a Consultation</a>
+        <a href="#services" class="pill pill-dark">Explore Services</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="about-left">
+          <div>
+            <span class="eyebrow">Who is Esther?</span>
+            <span class="sublabel">Singapore Property Advisor</span>
+          </div>
+          <div class="about-photo" role="img" aria-label="Esther Txe, Singapore property advisor"></div>
+        </div>
+        <p class="statement">Esther helps Singapore families and investors make <b>property decisions</b> with clarity, confidence and a plan for the <b>next ten years</b>.</p>
+      </div>
+
+      <div class="about-copy reveal">
+        <p>From a first HDB upgrade to restructuring ownership for long-term wealth, every recommendation starts with the figures — affordability, stamp duties, rental yield and projected gains — laid out clearly before you commit.</p>
+        <p>As a mother of three, Esther understands that property decisions are lifestyle decisions. School proximity, space to grow and financial peace of mind all shape the right choice.</p>
+      </div>
+
+      <div class="facts-row reveal">
+        <div>
+          <div class="fact-num">360<span class="dot">°</span></div>
+          <div class="fact-label">Full-cycle planning</div>
+        </div>
+        <div>
+          <div class="fact-num">1<span class="dot">:</span>1</div>
+          <div class="fact-label">Personal consultations</div>
+        </div>
+        <div>
+          <div class="fact-num">3<span class="dot">.</span></div>
+          <div class="fact-label">Languages</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services">
+    <div class="services-panel reveal">
+      <div class="wrap" style="padding:0;">
+        <div class="section-head" style="margin-bottom:48px;">
+          <div>
+            <span class="eyebrow">Services</span>
+            <span class="sublabel">What Esther does</span>
+          </div>
+          <p class="statement">Tailored guidance across <b>every stage</b> of your property journey.</p>
+        </div>
+
+        <div role="list">
+          <div class="service-row" role="listitem">
+            <span class="service-num">01</span>
+            <span class="service-title">Property Investment</span>
+            <span class="service-desc">Assets with strong capital growth and rental potential, with clear entry and exit strategies.</span>
+            <span class="service-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="service-row" role="listitem">
+            <span class="service-num">02</span>
+            <span class="service-title">Decoupling Strategy</span>
+            <span class="service-desc">How restructuring ownership may affect ABSD exposure, financing and your next purchase.</span>
+            <span class="service-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="service-row" role="listitem">
+            <span class="service-num">03</span>
+            <span class="service-title">Rental Yield Analysis</span>
+            <span class="service-desc">Gross and net yield breakdowns so you know what a property truly returns after costs.</span>
+            <span class="service-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="service-row" role="listitem">
+            <span class="service-num">04</span>
+            <span class="service-title">Mortgage Affordability</span>
+            <span class="service-desc">TDSR, MSR and cash/CPF planning to set a realistic budget before you start viewing.</span>
+            <span class="service-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="service-row" role="listitem">
+            <span class="service-num">05</span>
+            <span class="service-title">Buying &amp; Selling</span>
+            <span class="service-desc">Pricing strategy, marketing, negotiation and smooth handling from offer to completion.</span>
+            <span class="service-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="service-row" role="listitem">
+            <span class="service-num">06</span>
+            <span class="service-title">Leasing &amp; Tenancy</span>
+            <span class="service-desc">Landlord and tenant representation with carefully reviewed, well-protected agreements.</span>
+            <span class="service-arrow" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APPROACH ================= -->
+  <section id="approach">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">The Approach</span>
+          <span class="sublabel">From first call to keys</span>
+        </div>
+        <p class="statement">No pressure, no guesswork — a <b>clear process</b> that keeps you informed at every step.</p>
+      </div>
+
+      <div class="approach-grid reveal">
+        <div class="approach-photo" role="img" aria-label="Residential property in Singapore">
+          <span class="pill pill-dark">Singapore · Residential &amp; Investment</span>
+        </div>
+        <div class="approach-steps">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-title">Discover</div>
+              <div class="step-desc">Your goals, timeline, family needs and current financial position.</div>
+            </div>
+          </div>
+          <div class="step-card dark">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-title">Analyse</div>
+              <div class="step-desc">Affordability, stamp duty, yield and gain projections across your options.</div>
+            </div>
+          </div>
+          <div class="step-card dark">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-title">Strategise</div>
+              <div class="step-desc">A shortlist and a recommended plan with the figures behind it.</div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <div>
+              <div class="step-title">Execute</div>
+              <div class="step-desc">Negotiation, bankers and lawyers coordinated through to completion.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CALCULATOR ================= -->
+  <section id="calculator">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Yield Calculator</span>
+          <span class="sublabel">A quick estimate</span>
+        </div>
+        <p class="statement">See what a property could <b>return</b> — before you <b>commit</b>.</p>
+      </div>
+
+      <div class="calc-card reveal">
+        <div class="calc-inputs">
+          <div class="field">
+            <label for="price">Purchase price (S$)</label>
+            <input type="number" id="price" value="1500000" min="0" step="1000" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="rent">Monthly rent (S$)</label>
+            <input type="number" id="rent" value="4800" min="0" step="50" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="costs">Annual costs (S$)</label>
+            <input type="number" id="costs" value="9000" min="0" step="100" inputmode="numeric">
+          </div>
+        </div>
+        <div class="calc-results">
+          <span class="yield-label">Net Rental Yield</span>
+          <div class="yield-big" id="netYieldBig">4.26%</div>
+          <div class="yield-rows">
+            <div class="yield-row"><span>Gross yield</span><span id="grossYield">3.84%</span></div>
+            <div class="yield-row"><span>Annual rent</span><span id="annualRent">S$57,600</span></div>
+            <div class="yield-row"><span>Net annual income</span><span id="netIncome">S$48,600</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="calc-disclaimer reveal">For illustration only. Excludes mortgage interest, vacancy and agent fees. Not financial advice.</p>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="contact-card reveal">
+      <div class="contact-inner">
+        <div class="contact-left">
+          <h2><span style="font-weight:300;">LET'S PLAN</span><br><b>YOUR NEXT MOVE</b><span class="dot">.</span></h2>
+          <a href="tel:+601131652854" class="contact-phone">+60 11-3165 2854</a>
+          <div class="contact-buttons">
+            <a href="https://wa.me/601131652854?text=Hi%20Esther%2C%20I%27d%20like%20to%20arrange%20a%20property%20consultation." target="_blank" rel="noopener" class="pill pill-accent">WhatsApp Esther</a>
+            <a href="tel:+601131652854" class="pill pill-line">Call Now</a>
+          </div>
+        </div>
+        <div class="contact-right">
+          CEA Reg. No. R000000X<br>
+          [Agency Name]<br>
+          Licence No. L0000000X
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <p>© <span id="year">2026</span> Esther Txe · Property Advisor, Singapore</p>
+    <p>CEA Reg. No. R000000X · [Agency Name] · Licence No. L0000000X</p>
+  </div>
+</footer>
+
+<!-- ================= WHATSAPP WIDGET ================= -->
+<div class="wa-fab-wrap">
+  <div class="wa-tooltip" id="waTooltip">Hi there 👋 Need property advice?</div>
+  <button class="wa-btn" id="waBtn" aria-label="Open WhatsApp chat">
+    <span class="wa-ring" aria-hidden="true"></span>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.001 0C7.164 0 0 7.163 0 16c0 2.837.751 5.5 2.063 7.805L.06 31.94l8.336-2.188A15.9 15.9 0 0 0 16.001 32C24.837 32 32 24.837 32 16S24.837 0 16.001 0zm0 29.09a13.03 13.03 0 0 1-6.656-1.823l-.478-.284-4.946 1.298 1.32-4.82-.312-.495A13.04 13.04 0 0 1 2.91 16c0-7.223 5.868-13.09 13.091-13.09S29.09 8.777 29.09 16 23.224 29.09 16.001 29.09zm7.17-9.78c-.393-.196-2.325-1.147-2.686-1.278-.36-.131-.622-.196-.883.197-.262.392-1.014 1.277-1.243 1.538-.229.262-.458.295-.85.098-.393-.196-1.656-.611-3.154-1.95-1.166-1.04-1.953-2.326-2.182-2.718-.229-.393-.025-.605.17-.801.197-.196.393-.458.59-.687.196-.229.262-.393.393-.655.131-.262.066-.49-.033-.687-.098-.196-.883-2.129-1.21-2.913-.32-.774-.646-.669-.883-.682l-.754-.013c-.262 0-.687.098-1.047.49-.36.393-1.375 1.343-1.375 3.276 0 1.934 1.41 3.802 1.606 4.064.196.262 2.686 4.097 6.509 5.583 3.823 1.486 3.823.99 4.511.93.688-.065 2.325-.95 2.653-1.867.327-.916.327-1.702.229-1.866-.098-.164-.36-.262-.753-.458z"/></svg>
+  </button>
+  <span class="wa-badge" id="waBadge">1</span>
+</div>
+
+<div class="wa-popup" id="waPopup" role="dialog" aria-label="WhatsApp chat with Esther" aria-hidden="true">
+  <div class="wa-popup-header">
+    <div class="wa-avatar">ET<span class="wa-online" aria-hidden="true"></span></div>
+    <div class="who">
+      <div class="name">Esther Txe</div>
+      <div class="status">Typically replies within an hour</div>
+    </div>
+    <button class="wa-close" id="waClose" aria-label="Close chat">×</button>
+  </div>
+  <div class="wa-body">
+    <div class="wa-bubble">
+      Hi there! 👋 I'm Esther. Thinking of buying, selling, renting or investing in property? I'm happy to help.
+      <div class="wa-time" id="waTime">09:00</div>
+    </div>
+  </div>
+  <a href="https://wa.me/601131652854?text=Hi%20Esther%2C%20I%27d%20like%20to%20arrange%20a%20property%20consultation." target="_blank" rel="noopener" class="wa-start">Start Chat</a>
+</div>
+
+<script>
+  // ---------- Year ----------
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- Nav scroll state ----------
+  const nav = document.getElementById('siteNav');
+  function onScroll(){
+    if(window.scrollY > 40){ nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // ---------- Mobile menu ----------
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ---------- Yield calculator ----------
+  const priceInput = document.getElementById('price');
+  const rentInput = document.getElementById('rent');
+  const costsInput = document.getElementById('costs');
+  const netYieldBig = document.getElementById('netYieldBig');
+  const grossYieldEl = document.getElementById('grossYield');
+  const annualRentEl = document.getElementById('annualRent');
+  const netIncomeEl = document.getElementById('netIncome');
+
+  function fmtSGD(n){
+    return 'S$' + Math.round(n).toLocaleString('en-SG');
+  }
+
+  function calcYield(){
+    const price = parseFloat(priceInput.value) || 0;
+    const rent = parseFloat(rentInput.value) || 0;
+    const costs = parseFloat(costsInput.value) || 0;
+    const annualRent = rent * 12;
+    const netIncome = annualRent - costs;
+    const gross = price > 0 ? (annualRent / price) * 100 : 0;
+    const net = price > 0 ? (netIncome / price) * 100 : 0;
+
+    netYieldBig.textContent = net.toFixed(2) + '%';
+    grossYieldEl.textContent = gross.toFixed(2) + '%';
+    annualRentEl.textContent = fmtSGD(annualRent);
+    netIncomeEl.textContent = fmtSGD(netIncome);
+  }
+  [priceInput, rentInput, costsInput].forEach(el => el.addEventListener('input', calcYield));
+  calcYield();
+
+  // ---------- WhatsApp widget ----------
+  const waBtn = document.getElementById('waBtn');
+  const waPopup = document.getElementById('waPopup');
+  const waTooltip = document.getElementById('waTooltip');
+  const waBadge = document.getElementById('waBadge');
+  const waClose = document.getElementById('waClose');
+  const waTime = document.getElementById('waTime');
+
+  const now = new Date();
+  waTime.textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+
+  let tooltipTimer1 = setTimeout(() => waTooltip.classList.add('show'), 3000);
+  let tooltipTimer2 = setTimeout(() => waTooltip.classList.remove('show'), 11000);
+
+  function hideBadgeAndTooltip(){
+    waBadge.classList.add('hide');
+    waTooltip.classList.remove('show');
+    clearTimeout(tooltipTimer1);
+    clearTimeout(tooltipTimer2);
+  }
+
+  waBtn.addEventListener('click', () => {
+    hideBadgeAndTooltip();
+    const willOpen = !waPopup.classList.contains('open');
+    waPopup.classList.toggle('open');
+    waPopup.setAttribute('aria-hidden', willOpen ? 'false' : 'true');
+  });
+  waClose.addEventListener('click', () => {
+    waPopup.classList.remove('open');
+    waPopup.setAttribute('aria-hidden', 'true');
+  });
+</script>
+
+</body>
+</html>
